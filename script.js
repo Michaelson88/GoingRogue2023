@@ -1,14 +1,17 @@
-// 1. Select the form and the input field
-const form = document.getElementById('numberForm');
-const numberInput = document.getElementById('userNumber');
+const accountBalance= 299;
+const daysLeft= 20;
+const totalGoal= 800;
 
-// 2. Add an event listener to wait for the user to click submit
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevents the page from reloading
+function dailyGoal(balance, goal, daysLeft) {
+    //Check if the daily goal is already met
+    if (accountBalance >= goal) {
+        return "You have enough to make the car payment, keep up the great work.";
+    }
 
-    // 3. Get the value from the input and convert it to a real number
-    const inputValue = Number(numberInput.value);
+    //Calculate and return the amount needed per day to make the goal
+    const amountLeft = goal - balance;
+    const dailyAmount = (amountLeft / daysLeft).toFixed(2);
+    return `You need to make $${dailyAmount} per day for the remainder of the month.`
+};
 
-    // 4. Log the number to the developer console
-    console.log("The number entered is:", inputValue);
-});
+console.log(dailyGoal(accountBalance, totalGoal, daysLeft));
